@@ -1,12 +1,21 @@
 import React from 'react';
 import systems from '../assets/restructured_data.json'
-
+import { generateStableDiffusionPrompt } from '../utils/transformers';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setSelectedHost } from '../state/hostSlice';
 
 const SystemList = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const onSystemClick = (system) => {
+        dispatch(setSelectedHost(system))
+        navigate('/system-details')
+    }
     return (
         <div style={styles.container}>
             {systems.map((system, index) => (
-                <div key={index} style={styles.systemCard}>
+                <div key={index} style={styles.systemCard} onClick={() => onSystemClick(system)}>
                     <h2 style={styles.hostname}>{system.hostname}</h2>
                     <p style={styles.info}>Star Temperature: {system.star.st_teff}K</p>
                     <p style={styles.info}>Number of Planets: {system.star.sy_pnum}</p>

@@ -1,15 +1,15 @@
-function generateStableDiffusionPrompt(system) {
-    const { hostname, star, planets } = system;
+export function generateStableDiffusionPrompt(system) {
+    const { star, planets } = system;
 
     // Generalized star description with dynamic values
-    const starDescription = `A distant star system named ${hostname}, located approximately ${Math.round(star.sy_dist)} light-years away. ` +
+    const starDescription = `A distant star system located approximately ${Math.round(star.sy_dist)} light-years away. ` +
         `The star shines brightly with a surface temperature of ${star.st_teff} Kelvin. ` +
         `It has a radius of ${star.st_rad} times that of our Sun, and its mass is ${star.st_mass} times the mass of the Sun. ` +
         `This system contains ${star.sy_pnum} planet${star.sy_pnum > 1 ? 's' : ''} in orbit around it. `;
 
     // Dynamically describing each planet
     const planetDescriptions = planets.map(planet => {
-        return `One of its planets, named ${planet.pl_name}, was discovered in ${planet.disc_year} through the method of ${planet.discoverymethod}. ` +
+        return `One of its planets, ` +
             (planet.pl_bmasse ? `This planet has a mass ${Math.round(planet.pl_bmasse)} times that of Earth. ` : "") +
             (planet.pl_orbper ? `It takes ${planet.pl_orbper} days to complete an orbit around the star. ` : "") +
             `The planet follows an elliptical orbit with an eccentricity of ${planet.pl_orbeccen}. `;
