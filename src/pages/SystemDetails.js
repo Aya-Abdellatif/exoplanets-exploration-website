@@ -77,8 +77,9 @@ const SystemDetails = () => {
     const [generateImage, { isLoading, data }] = useGenerateImageFromTextMutation();
     const handleGenerateImage = async () => {
         if (systemData) {
+            const prompt = generateStableDiffusionPrompt(systemData)
             await generateImage({
-                prompt: generateStableDiffusionPrompt(systemData)
+                prompt
             });
         }
     };
