@@ -2,13 +2,21 @@ import React from 'react';
 import HeroSection from '../components/HeroSection';
 import ButtonRow from '../components/ButtonRow';
 import backgroundImage from '../assets/background1.jpg'; // Import the image
+import backgroundImage2 from '../assets/background0.jpg'; // Import the image
+import WelcomeSection from '../components/WelcomeSection';
 
 const Home = () => {
     return (
-        <div style={{ ...styles.container, backgroundImage: `url(${backgroundImage})` }}>
-            <div style={styles.overlay}></div>
-            <HeroSection />
-            <ButtonRow />
+        <div>
+            <div style={{ ...styles.container, backgroundImage: `url(${backgroundImage})` }}>
+                <div style={styles.overlay}></div>
+                <HeroSection />
+                <ButtonRow />
+            </div>
+            <div style={{ ...styles.container, backgroundImage: `url(${backgroundImage2})` }}>
+                <div style={styles.overlay}></div>
+                <WelcomeSection/>
+            </div>
         </div>
     );
 };
@@ -32,7 +40,6 @@ const styles = {
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
         zIndex: 1,
     },
 };
