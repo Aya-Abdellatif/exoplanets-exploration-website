@@ -1,5 +1,5 @@
 import React from 'react';
-import Section from '../components/Section';
+import Section from './Section';
 
 const WelcomeSection = () => {
     return (
