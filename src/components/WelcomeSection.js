@@ -1,14 +1,10 @@
 import React from 'react';
-import Section from './Section';
-
 const WelcomeSection = () => {
     return (
         <div style={styles.container}>
 
             <h1 style={styles.mainTitle}>Welcome</h1>
-            <Section
-                text="Welcome to Exoplorers! Our platform is dedicated to sparking curiosity and providing an immersive learning experience about exoplanets. Let’s dive into the wonders of the universe and explore planets beyond our solar system."
-            />
+            <pr style={styles.prr}>"Welcome to Exoplorers! Our platform is dedicated to sparking curiosity and providing an immersive learning experience about exoplanets. Let’s dive into the wonders of the universe and explore planets beyond our solar system."</pr>
         </div>
     );
 };
@@ -16,21 +12,23 @@ const WelcomeSection = () => {
 const styles = {
     container: {
         padding: '50px 0',
-        backgroundColor: 'black',
-        fontFamily: 'Arial, sans-serif',
-        backgroundImage: `url(${backgroundImage})`,
+        fontFamily: 'poppins',
         backgroundSize: 'cover',
         backgroundAttachment: 'fixed', // This makes the background image fixed during scrolling
         backgroundPosition: 'center',
+        
     },
-    overlay: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        zIndex: 1,
+    mainTitle: {
+        textAlign: 'center',
+        fontSize: '50px',
+        fontWeight: 'bold',
+        color: '#fff',
     },
-};
+    prr:{
+        color:'#fff',
+        margin: '0 auto',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+}
 export default WelcomeSection;
