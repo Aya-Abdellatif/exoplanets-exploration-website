@@ -1,6 +1,5 @@
 import React from 'react';
 import systems from '../assets/restructured_data.json'
-import { generateStableDiffusionPrompt } from '../utils/transformers';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setSelectedHost } from '../state/hostSlice';
