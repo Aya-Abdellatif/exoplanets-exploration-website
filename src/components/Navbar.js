@@ -36,7 +36,7 @@ const styles = {
     justifyContent: 'center',
   },
   navLink: {
-    color: '#fff',
+    color: 'black',
     padding: '0 20px',
     textDecoration: 'none',
     fontSize: '18px',

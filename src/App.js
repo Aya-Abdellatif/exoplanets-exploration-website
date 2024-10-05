@@ -6,12 +6,14 @@ import AboutUs from './pages/AboutUs';
 import TestRender from './pages/TestRender';
 import SystemList from './pages/SystemList';
 import SystemDetails from './pages/SystemDetails';
+import QuizList from './pages/QuizList';
+import QuizPage from './pages/Quiz';
 
 
 const App = () => {
   return (
     <Router>
-      <div style={{ backgroundColor: 'black' }}>
+      <div style={{ backgroundColor: 'white' }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -19,6 +21,8 @@ const App = () => {
           <Route path="/test" element={<TestRender />} />
           <Route path="/system-list" element={<SystemList />} />
           <Route path="/system-details" element={<SystemDetails />} />
+          <Route path="/quiz-list" element={<QuizList />} />
+          <Route path="/quiz" element={<QuizPage />} />
         </Routes>
       </div>
     </Router>

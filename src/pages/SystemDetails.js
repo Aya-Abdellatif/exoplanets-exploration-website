@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { useGenerateImageFromTextMutation } from '../state/api/models-lab'; // Assuming this hook is defined elsewhere
+import { useGenerateImageFromTextMutation } from '../state/api/models-lab';
 import { generateStableDiffusionPrompt } from '../utils/transformers';
 
 // Styling object using JavaScript
@@ -74,8 +74,7 @@ const styles = {
 const SystemDetails = () => {
     const systemData = useSelector((state) => state.host.selectedHost);
     const { hostname, star, planets } = systemData;
-    const [generateImage, { isLoading, isError, data }] = useGenerateImageFromTextMutation();
-    console.log(data)
+    const [generateImage, { isLoading, data }] = useGenerateImageFromTextMutation();
     const handleGenerateImage = async () => {
         if (systemData) {
             await generateImage({
@@ -86,6 +85,18 @@ const SystemDetails = () => {
 
     return (
         <div style={styles.container}>
+            {/* Button to generate the image */}
+            <button style={styles.button} onClick={handleGenerateImage} disabled={isLoading}>
+                {isLoading ? 'Generating Image...' : 'Generate Image'}
+            </button>
+
+            {data && (
+                <div style={styles.imageContainer}>
+                    {data.output.map((imageUrl, index) => (
+                        <img key={index} src={imageUrl} alt={`Generated ${index}`} style={styles.image} />
+                    ))}
+                </div>
+            )}
             {/* Host Information */}
             <div style={styles.hostInfo}>
                 <h1 style={styles.title}>{hostname}</h1>
@@ -118,18 +129,7 @@ const SystemDetails = () => {
                 ))}
             </ul>
 
-            {/* Button to generate the image */}
-            <button style={styles.button} onClick={handleGenerateImage} disabled={isLoading}>
-                {isLoading ? 'Generating Image...' : 'Generate Image'}
-            </button>
 
-            {data && (
-                <div style={styles.imageContainer}>
-                    {data.output.map((imageUrl, index) => (
-                        <img key={index} src={imageUrl} alt={`Generated ${index}`} style={styles.image} />
-                    ))}
-                </div>
-            )}
         </div>
     );
 };
