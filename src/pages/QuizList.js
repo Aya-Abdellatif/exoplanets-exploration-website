@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedQuiz } from '../state/quizSlice';
+import quizBackground from '../assets/quiz-back.jpg'
 
 const QuizList = () => {
     const quizzes = useSelector(state => state.quiz.quizzes);
@@ -16,7 +17,7 @@ const QuizList = () => {
 
     return (
         <div style={styles.container}>
-            <h1 style={styles.header}>Quizzes</h1>
+            <h1 style={styles.header}>Planetary Quizzes</h1>
             <div style={styles.quizList}>
                 {quizzes.map((quiz) => (
                     <div key={quiz.id} style={styles.quizItem}>
@@ -47,13 +48,15 @@ const QuizList = () => {
 
 const styles = {
     container: {
-        padding: '20px',
-        maxWidth: '600px',
+        backgroundImage: `url(${quizBackground})`,
+        padding: '100px',
+        
         margin: 'auto',
     },
     header: {
+        color: "white",
         textAlign: 'center',
-        fontSize: '24px',
+        fontSize: '2rem',
         fontWeight: 'bold',
         marginBottom: '20px',
     },

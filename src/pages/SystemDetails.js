@@ -2,29 +2,34 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useGenerateImageFromTextMutation } from '../state/api/models-lab';
 import { generateStableDiffusionPrompt } from '../utils/transformers';
+import PlanetRenderer from '../components/PlanetRenderer';
 
 // Styling object using JavaScript
 const styles = {
     container: {
         fontFamily: 'Arial, sans-serif',
-        maxWidth: '1200px',
+        maxWidth: '1000px',
         margin: '0 auto',
         padding: '20px',
         textAlign: 'center',
+        color: '#333',
     },
     hostInfo: {
-        backgroundColor: '#f4f4f4',
+        backgroundColor: '#f9fafb',
         padding: '20px',
-        borderRadius: '8px',
-        marginBottom: '20px',
+        borderRadius: '12px',
+        marginBottom: '30px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
     },
     title: {
-        fontSize: '24px',
+        fontSize: '26px',
         fontWeight: 'bold',
-        marginBottom: '10px',
+        marginBottom: '12px',
+        color: '#2c3e50',
     },
     description: {
         fontSize: '16px',
+        lineHeight: '1.6',
         color: '#555',
     },
     planetList: {
@@ -32,38 +37,50 @@ const styles = {
         padding: '0',
     },
     planetItem: {
-        backgroundColor: '#e0e0e0',
-        padding: '15px',
-        borderRadius: '8px',
-        marginBottom: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: '#f1f2f6',
+        padding: '20px',
+        borderRadius: '12px',
+        marginBottom: '15px',
         textAlign: 'left',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
     },
     planetTitle: {
-        fontSize: '20px',
-        fontWeight: 'bold',
-        marginBottom: '5px',
+        fontSize: '22px',
+        fontWeight: '600',
+        marginBottom: '10px',
+        color: '#1abc9c',
     },
     planetDescription: {
-        fontSize: '14px',
-        color: '#333',
+        fontSize: '15px',
+        color: '#34495e',
+        lineHeight: '1.5',
     },
     imageContainer: {
         marginTop: '20px',
+        marginBottom: '30px',
     },
     image: {
         maxWidth: '100%',
         height: 'auto',
         borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
     },
     button: {
-        padding: '10px 20px',
+        padding: '12px 24px',
         fontSize: '16px',
-        backgroundColor: '#007bff',
+        backgroundColor: '#2980b9',
         color: '#fff',
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
-        marginBottom: '20px',
+        marginBottom: '30px',
+        transition: 'background-color 0.3s',
+    },
+    buttonHover: {
+        backgroundColor: '#3498db',
     },
     loading: {
         fontSize: '18px',
@@ -75,13 +92,20 @@ const SystemDetails = () => {
     const systemData = useSelector((state) => state.host.selectedHost);
     const { hostname, star, planets } = systemData;
     const [generateImage, { isLoading, data }] = useGenerateImageFromTextMutation();
+
     const handleGenerateImage = async () => {
         if (systemData) {
-            const prompt = generateStableDiffusionPrompt(systemData)
-            await generateImage({
-                prompt
-            });
+            const prompt = generateStableDiffusionPrompt(systemData);
+            await generateImage({ prompt });
         }
+    };
+
+    const renderPlanetDetail = (label, value) => {
+        return (
+            <span>
+                <strong>{label}:</strong> {value ?? 'Undocumented'} <br />
+            </span>
+        );
     };
 
     return (
@@ -98,6 +122,7 @@ const SystemDetails = () => {
                     ))}
                 </div>
             )}
+
             {/* Host Information */}
             <div style={styles.hostInfo}>
                 <h1 style={styles.title}>{hostname}</h1>
@@ -118,19 +143,18 @@ const SystemDetails = () => {
                 {planets.map((planet, index) => (
                     <li key={index} style={styles.planetItem}>
                         <h3 style={styles.planetTitle}>{planet.pl_name}</h3>
+                        <PlanetRenderer planetClassification={planet.planet_classification} width={300} height={300} planetColor={planet.planet_colour_approximation} />
                         <p style={styles.planetDescription}>
-                            <strong>Discovery Method:</strong> {planet.discoverymethod} <br />
-                            <strong>Discovery Year:</strong> {planet.disc_year} <br />
-                            <strong>Discovery Facility:</strong> {planet.disc_facility} <br />
-                            <strong>Orbital Period:</strong> {planet.pl_orbper} days <br />
-                            <strong>Mass:</strong> {planet.pl_bmasse} Earth Masses <br />
-                            <strong>Eccentricity:</strong> {planet.pl_orbeccen}
+                            {renderPlanetDetail('Discovery Method', planet.discoverymethod)}
+                            {renderPlanetDetail('Discovery Year', planet.disc_year)}
+                            {renderPlanetDetail('Discovery Facility', planet.disc_facility)}
+                            {renderPlanetDetail('Orbital Period', planet.pl_orbper && `${planet.pl_orbper} days`)}
+                            {renderPlanetDetail('Mass', planet.pl_bmasse && `${planet.pl_bmasse} Earth Masses`)}
+                            {renderPlanetDetail('Eccentricity', planet.pl_orbeccen)}
                         </p>
                     </li>
                 ))}
             </ul>
-
-
         </div>
     );
 };
