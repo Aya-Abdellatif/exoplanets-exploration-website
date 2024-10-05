@@ -1,8 +1,7 @@
 import React from 'react';
 import '../App.css'; // Make sure this file exists for styles
-import firstBackground from '../assets/backgroundvideo.jpg'; // Adjust the path based on your folder structure
-import secondBackground from '../assets/planets.jpg'; // Adjust the path based on your folder structure
-import video from '../assets/expo_FINAL.mp4';
+import firstBackground from '../assets/bghologram.jpg'; // Adjust the path based on your folder structure
+import video from '../assets/Hologram.mp4';
 const Educational = () => {
   return (
     <div>
@@ -16,10 +15,6 @@ const Educational = () => {
         </div>
       </div>
 
-      {/* Second Background Section */}
-      <div className="background-section" style={{ backgroundImage: `url(${secondBackground})` }}>
-        {/* You can add content here if needed */}
-      </div>
     </div>
   );
 };

@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 const ButtonRow = () => {
   return (
     <div style={styles.buttonRow}>
-      <Link to="/system-list" style={{ textDecoration: 'none' }}>
-        <button style={styles.button}>System List</button>
+        <Link to="/educational" style={{ textDecoration: 'none' }}>
+        <button style={styles.button}>Exoplanet Story</button>
+        </Link>
+      <Link to="/hologram" style={{ textDecoration: 'none' }}>
+        <button style={styles.button}>Launch the Hologram</button>
       </Link>
-      <Link to="/educational" style={{ textDecoration: 'none' }}>
-        <button style={styles.button}>Educational</button>
+      <Link to="/system-list" style={{ textDecoration: 'none' }}>
+        <button style={styles.button}>Explore AI Predictions</button>
       </Link>
       <Link to="/quiz-list" style={{ textDecoration: 'none' }}>
-        <button style={styles.button}>Quiz List</button>
-      </Link>
-      <Link to="/quiz" style={{ textDecoration: 'none' }}>
-        <button style={styles.button}>Start Quiz</button>
+        <button style={styles.button}>Planetary Quiz</button>
       </Link>
     </div>
   );
