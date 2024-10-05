@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import { useGenerateImageFromTextMutation } from '../state/api/models-lab'; // Assuming this hook is defined elsewhere
+import { generateStableDiffusionPrompt } from '../utils/transformers';
 
 // Styling object using JavaScript
 const styles = {
@@ -45,12 +46,43 @@ const styles = {
     planetDescription: {
         fontSize: '14px',
         color: '#333',
+    },
+    imageContainer: {
+        marginTop: '20px',
+    },
+    image: {
+        maxWidth: '100%',
+        height: 'auto',
+        borderRadius: '8px',
+    },
+    button: {
+        padding: '10px 20px',
+        fontSize: '16px',
+        backgroundColor: '#007bff',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        marginBottom: '20px',
+    },
+    loading: {
+        fontSize: '18px',
+        color: '#333',
     }
 };
 
 const SystemDetails = () => {
-    const systemData = useSelector((state) => state.host.selectedHost)
+    const systemData = useSelector((state) => state.host.selectedHost);
     const { hostname, star, planets } = systemData;
+    const [generateImage, { isLoading, isError, data }] = useGenerateImageFromTextMutation();
+    console.log(data)
+    const handleGenerateImage = async () => {
+        if (systemData) {
+            await generateImage({
+                prompt: generateStableDiffusionPrompt(systemData)
+            });
+        }
+    };
 
     return (
         <div style={styles.container}>
@@ -85,6 +117,19 @@ const SystemDetails = () => {
                     </li>
                 ))}
             </ul>
+
+            {/* Button to generate the image */}
+            <button style={styles.button} onClick={handleGenerateImage} disabled={isLoading}>
+                {isLoading ? 'Generating Image...' : 'Generate Image'}
+            </button>
+
+            {data && (
+                <div style={styles.imageContainer}>
+                    {data.output.map((imageUrl, index) => (
+                        <img key={index} src={imageUrl} alt={`Generated ${index}`} style={styles.image} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
