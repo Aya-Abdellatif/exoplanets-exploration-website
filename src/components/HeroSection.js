@@ -14,11 +14,11 @@ const HeroSection = () => {
 const styles = {
     heroSection: {
         textAlign: 'center',
-        marginTop: '100px',
+        marginTop: '10px',
         zIndex: 2,
     },
     heroText: {
-        fontSize: '48px',
+        fontSize: '50px',
         fontWeight: 'bold',
         color: '#fff',
     },

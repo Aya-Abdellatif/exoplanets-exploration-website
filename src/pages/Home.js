@@ -1,7 +1,7 @@
 import React from 'react';
 import HeroSection from '../components/HeroSection';
 import ButtonRow from '../components/ButtonRow';
-import backgroundImage from '../assets/background.jpg'; // Import the image
+import backgroundImage from '../assets/background1.jpg'; // Import the image
 
 const Home = () => {
     return (
@@ -23,7 +23,7 @@ const styles = {
         alignItems: 'center',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        fontFamily: 'Arial, sans-serif',
+        fontFamily: 'poppins',
         overflow: 'hidden',
     },
     overlay: {

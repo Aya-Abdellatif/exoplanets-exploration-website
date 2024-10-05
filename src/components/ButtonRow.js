@@ -22,7 +22,8 @@ const styles = {
     button: {
         padding: '15px 30px',
         fontSize: '18px',
-        backgroundColor: '#fff',
+        backgroundColor: '#a44fb5',
+        color:'#fff',
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
