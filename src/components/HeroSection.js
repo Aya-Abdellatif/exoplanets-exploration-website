@@ -14,7 +14,7 @@ const HeroSection = () => {
 const styles = {
     heroSection: {
         textAlign: 'center',
-        marginTop: '10px',
+        marginTop: '5px',
         zIndex: 2,
     },
     heroText: {
