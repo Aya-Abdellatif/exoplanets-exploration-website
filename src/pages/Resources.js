@@ -1,5 +1,5 @@
 import React from 'react';
-import backgroundImage from '../assets/resources.jpg'
+import backgroundImage from '../assets/background0.jpg'
 const Resources = () => {
     // An array of references with text and URLs
     const references = [
@@ -48,15 +48,16 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh', // Full viewport height
         fontFamily: 'Poppins',
         backgroundImage: `url(${backgroundImage})`,
-     
-
+        backgroundSize: 'cover', // Ensures the image covers the container
+        backgroundRepeat: 'no-repeat', // Prevents the image from repeating
+        backgroundPosition: 'center', // Centers the image in the container
     },
     referencesContainer: {
         padding: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Light background for readability
+        margin: '5rem 0rem',
+        backgroundColor: 'white',
         borderRadius: '8px',
         textAlign: 'center',
         maxWidth: '600px',

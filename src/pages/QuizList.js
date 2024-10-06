@@ -26,7 +26,7 @@ const QuizList = () => {
                             <span
                                 style={{
                                     ...styles.statusIndicator,
-                                    backgroundColor: quiz.completed ? '#4caf50' : '#f44336',
+                                    backgroundColor: quiz.completed ? '#4caf50' : '#a44fb5',
                                 }}
                             >
                                 {quiz.completed ? `${quiz.maxGrade} / ${quiz.questions.length}` : `Pending`}
@@ -50,7 +50,7 @@ const styles = {
     container: {
         backgroundImage: `url(${quizBackground})`,
         padding: '100px',
-        
+
         margin: 'auto',
     },
     header: {

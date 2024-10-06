@@ -6,6 +6,7 @@ import gasTexture from '../assets/textures/gas.jpeg';
 import jupiterTexture from '../assets/textures/jupiter.jpg';
 import neptuneTexture from '../assets/textures/neptune.jpg';
 import terrestrialTexture from '../assets/textures/terrestial.jpg';
+import superEarthTexture from '../assets/textures/superearth.png';
 
 function PlanetRenderer({ planetClassification = 'Unknown type (insufficient data)', width = window.innerWidth, height = window.innerHeight, planetColor }) {
     const refContainer = useRef(null);
@@ -27,11 +28,14 @@ function PlanetRenderer({ planetClassification = 'Unknown type (insufficient dat
         const textureLoader = new THREE.TextureLoader();
         let planetTexture;
 
-        console.log(planetClassification.toLowerCase())
         switch (planetClassification.toLowerCase()) {
             case 'terrestrial (rocky planet like earth)':
             case 'terrestrial (based on mass)':
                 planetTexture = textureLoader.load(terrestrialTexture); // Terrestrial planet texture
+                break;
+            case 'super-earth (larger rocky planet)':
+            case 'super-earth (based on mass)':
+                planetTexture = textureLoader.load(superEarthTexture); // Super-Earth planet texture
                 break;
             case 'mostly gas (gas-dominant planet like neptune)':
             case 'neptune-like (gas planet like neptune)':
@@ -56,7 +60,7 @@ function PlanetRenderer({ planetClassification = 'Unknown type (insufficient dat
         const material = new THREE.MeshBasicMaterial({ map: planetTexture });
 
         // Create sphere geometry (planet)
-        const geometry = new THREE.SphereGeometry(2, 32, 32);
+        const geometry = new THREE.SphereGeometry(1.7, 32, 32); // Adjust size if needed
         const planet = new THREE.Mesh(geometry, material);
         scene.add(planet);
 
@@ -90,7 +94,17 @@ function PlanetRenderer({ planetClassification = 'Unknown type (insufficient dat
 
     }, [planetClassification, width, height]); // Re-run effect if planetClassification or size changes
 
-    return <div ref={refContainer}></div>;
+    return (
+        <div
+            ref={refContainer}
+            style={{
+                width: `${width}px`,
+                height: `${height}px`,
+                borderRadius: '20px', // Add border radius
+                overflow: 'hidden', // Ensure content respects the border radius
+            }}
+        ></div>
+    );
 }
 
 export default PlanetRenderer;

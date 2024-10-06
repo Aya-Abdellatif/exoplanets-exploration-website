@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // Load the data from a JSON file
-const data = JSON.parse(fs.readFileSync('kepler_confirmed.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('data_analysis_stuff/kepler_confirmed.json', 'utf8'));
 
 // Function to restructure the data
 function restructureData(data) {

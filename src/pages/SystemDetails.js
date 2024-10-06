@@ -8,11 +8,11 @@ import PlanetRenderer from '../components/PlanetRenderer';
 const styles = {
     container: {
         fontFamily: 'Arial, sans-serif',
-        maxWidth: '1000px',
-        margin: '0 auto',
-        padding: '20px',
+
+        padding: '0rem 4rem',
         textAlign: 'center',
         color: '#333',
+        background: 'white',
     },
     hostInfo: {
         backgroundColor: '#f9fafb',
@@ -110,18 +110,6 @@ const SystemDetails = () => {
 
     return (
         <div style={styles.container}>
-            {/* Button to generate the image */}
-            <button style={styles.button} onClick={handleGenerateImage} disabled={isLoading}>
-                {isLoading ? 'Generating Image...' : 'Generate Image'}
-            </button>
-
-            {data && (
-                <div style={styles.imageContainer}>
-                    {data.output.map((imageUrl, index) => (
-                        <img key={index} src={imageUrl} alt={`Generated ${index}`} style={styles.image} />
-                    ))}
-                </div>
-            )}
 
             {/* Host Information */}
             <div style={styles.hostInfo}>
@@ -135,6 +123,19 @@ const SystemDetails = () => {
                     Visible Magnitude: {star.sy_vmag} <br />
                     Coordinates (RA/Dec): {star.rastr}, {star.decstr}
                 </p>
+                {/* Button to generate the image */}
+                <button style={styles.button} onClick={handleGenerateImage} disabled={isLoading}>
+                    {isLoading ? 'Generating Image...' : 'Generate Image'}
+                </button>
+
+                {data && (
+                    <div style={styles.imageContainer}>
+                        {data.output.map((imageUrl, index) => (
+                            <img key={index} src={imageUrl} alt={`Generated ${index}`} style={styles.image} />
+                        ))}
+                    </div>
+                )}
+
             </div>
 
             {/* Planets List */}
@@ -142,8 +143,20 @@ const SystemDetails = () => {
             <ul style={styles.planetList}>
                 {planets.map((planet, index) => (
                     <li key={index} style={styles.planetItem}>
-                        <h3 style={styles.planetTitle}>{planet.pl_name}</h3>
-                        <PlanetRenderer planetClassification={planet.planet_classification} width={300} height={300} planetColor={planet.planet_colour_approximation} />
+                        <h3
+                            style={{
+                                ...styles.planetTitle,
+                                color: planet.planet_colour_approximation || 'black', // Set color based on planet's color approximation
+                            }}
+                        >
+                            {planet.pl_name}
+                        </h3>
+                        <PlanetRenderer
+                            planetClassification={planet.planet_classification}
+                            width={700}
+                            height={400}
+                            planetColor={planet.planet_colour_approximation}
+                        />
                         <p style={styles.planetDescription}>
                             {renderPlanetDetail('Discovery Method', planet.discoverymethod)}
                             {renderPlanetDetail('Discovery Year', planet.disc_year)}
@@ -151,6 +164,8 @@ const SystemDetails = () => {
                             {renderPlanetDetail('Orbital Period', planet.pl_orbper && `${planet.pl_orbper} days`)}
                             {renderPlanetDetail('Mass', planet.pl_bmasse && `${planet.pl_bmasse} Earth Masses`)}
                             {renderPlanetDetail('Eccentricity', planet.pl_orbeccen)}
+                            {renderPlanetDetail('Assumed planet type', planet.planet_classification)}
+                            {renderPlanetDetail('Assumed colour', planet.planet_colour_approximation)}
                         </p>
                     </li>
                 ))}

@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 const ButtonRow = () => {
   return (
     <div style={styles.buttonRow}>
-        <Link to="/educational" style={{ textDecoration: 'none' }}>
+      <Link to="/educational" style={{ textDecoration: 'none' }}>
         <button style={styles.button}>Exoplanet Story</button>
-        </Link>
+      </Link>
       <Link to="/hologram" style={{ textDecoration: 'none' }}>
         <button style={styles.button}>Launch the Hologram</button>
       </Link>
       <Link to="/system-list" style={{ textDecoration: 'none' }}>
-        <button style={styles.button}>Explore AI Predictions</button>
+        <button style={styles.button}>Explore the systems of our universe</button>
       </Link>
       <Link to="/quiz-list" style={{ textDecoration: 'none' }}>
         <button style={styles.button}>Planetary Quiz</button>

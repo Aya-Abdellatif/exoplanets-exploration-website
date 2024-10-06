@@ -30,6 +30,7 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
+        backgroundColor: 'white',
         gap: '20px',
         padding: '20px',
     },

@@ -17,7 +17,7 @@ import Resources from './pages/Resources';
 const App = () => {
   return (
     <Router>
-      <div style={{ backgroundColor: 'white' }}>
+      <div style={{ backgroundColor: '#030911' }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -7,6 +7,9 @@ const HeroSection = () => {
                 <span style={styles.exoText}>EXO</span>
                 <span style={styles.plorersText}>PLORERS</span>
             </h1>
+            <h4 style={styles.heroSubtext}>
+                For the best experience use a big display(desktop or laptop) to use the website
+            </h4>
         </section>
     );
 };
@@ -21,6 +24,9 @@ const styles = {
         fontSize: '50px',
         fontWeight: 'bold',
         color: '#fff',
+    },
+    heroSubtext: {
+        color: '#fff'
     },
     exoText: {
         color: '#fff',

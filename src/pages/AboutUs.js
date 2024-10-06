@@ -15,26 +15,26 @@ const AboutUs = () => {
             <h1 style={styles.mainTitle}>About Us</h1>
 
             {/* Sections */}
-            <Section 
+            <Section
                 title="Welcome to Explorers!"
                 text="Our solution is to make learning about the wonders of space and exoplanets accessible and engaging for preparatory students. Understanding our universe is crucial for inspiring future scientists and fostering curiosity. Our platform offers interactive tools, animated videos, holographic visualizations, and quizzes to make the study of exoplanets fun and educational."
-                backgroundImage={aboutImage} 
+                backgroundImage={aboutImage}
                 textOnRight={false} // Photo on left, text on right
             />
             <Section
                 title="Our Vision"
                 text="We envision a world where every preparatory student, regardless of background, has the opportunity to explore and understand the universe through innovative and interactive learning tools. By integrating cutting-edge technologies such as holograms, 3D animations, and AI, we aim to transform complex scientific concepts into accessible knowledge for all."
-                backgroundImage={visionImage} 
+                backgroundImage={visionImage}
                 textOnRight={true} // Photo on right, text on left
             />
-            <Section 
+            <Section
                 title="Our Mission"
                 text="Our mission is to empower preparatory students by providing an immersive, interactive learning experience that demystifies exoplanet research. We strive to inspire young minds to explore space by combining science and creativity through engaging animated videos, interactive quizzes, and holographic visualizations, making learning an exciting journey into the wonders of the cosmos."
-                backgroundImage={missionImage} 
+                backgroundImage={missionImage}
                 textOnRight={false} // Photo on left, text on right
             />
-            <Section 
-                backgroundImage={teamImage} 
+            <Section
+                backgroundImage={teamImage}
             />
         </div>
     );
@@ -63,6 +63,7 @@ const styles = {
     container: {
         position: 'relative', // Allows absolute positioning of children
         fontFamily: 'Poppins',
+        bacgroundColor: 'black',
         zIndex: 1, // Ensures container is above the background
     },
     backgroundContainer: {

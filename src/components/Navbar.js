@@ -17,15 +17,13 @@ const Navbar = () => {
 
 const styles = {
   navbar: {
-    position: 'sticky',  // Change from 'absolute' to 'sticky'
-    top: 0,              // Stick the navbar to the top
+    position: 'sticky',
+    top: 0,
     width: '100%',
     padding: '10px 0',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'white',
     textAlign: 'center',
-    zIndex: 2,
-    backdropFilter: 'blur(10px)',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+    zIndex: 10,
   },
   navList: {
     listStyle: 'none',

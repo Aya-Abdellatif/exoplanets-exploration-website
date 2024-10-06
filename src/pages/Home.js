@@ -15,7 +15,7 @@ const Home = () => {
             </div>
             <div style={{ ...styles.container, backgroundImage: `url(${backgroundImage2})` }}>
                 <div style={styles.overlay}></div>
-                <WelcomeSection/>
+                <WelcomeSection />
             </div>
         </div>
     );

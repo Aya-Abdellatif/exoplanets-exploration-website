@@ -11,12 +11,12 @@ const WelcomeSection = () => {
 
 const styles = {
     container: {
-        padding: '50px 0',
+        padding: '5rem',
         fontFamily: 'poppins',
         backgroundSize: 'cover',
         backgroundAttachment: 'fixed', // This makes the background image fixed during scrolling
         backgroundPosition: 'center',
-        
+
     },
     mainTitle: {
         textAlign: 'center',
@@ -24,9 +24,8 @@ const styles = {
         fontWeight: 'bold',
         color: '#fff',
     },
-    prr:{
-        color:'#fff',
-        margin: '0 auto',
+    prr: {
+        color: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
