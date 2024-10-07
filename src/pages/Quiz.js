@@ -108,9 +108,9 @@ const QuizPage = () => {
 // Basic styles
 const styles = {
     container: {
-        padding: '20px',
-        maxWidth: '600px',
-        margin: 'auto',
+        padding: '1rem 4rem',
+        backgroundColor: 'white',
+        margin: 'auto'
     },
     questionSection: {
         marginBottom: '20px',
