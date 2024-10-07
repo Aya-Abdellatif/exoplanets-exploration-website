@@ -9,10 +9,11 @@ export function generateStableDiffusionPrompt(system) {
 
     // Dynamically describing each planet
     const planetDescriptions = planets.map(planet => {
-        return `One of its planets, ` +
+        return `One of its planets, 2MASS J19383260+4603591 b, is classified as an ${planet.planet_classification}. ` +
             (planet.pl_bmasse ? `This planet has a mass ${Math.round(planet.pl_bmasse)} times that of Earth. ` : "") +
             (planet.pl_orbper ? `It takes ${planet.pl_orbper} days to complete an orbit around the star. ` : "") +
-            `The planet follows an elliptical orbit with an eccentricity of ${planet.pl_orbeccen}. `;
+            `The planet follows an elliptical orbit with an eccentricity of ${planet.pl_orbeccen}. ` +
+            `Its approximate color is represented by ${planet.planet_colour_approximation}.`;
     }).join(" ");
 
     // Final prompt with imaginative language
